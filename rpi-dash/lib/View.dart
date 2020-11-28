@@ -13,6 +13,7 @@ class View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xaa0b1530),
       appBar: AppBar(
         title: Text(this._title),
       ),

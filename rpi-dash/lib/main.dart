@@ -15,7 +15,7 @@ void main() {
     ],
     locale: Locale('ru', 'RU'),
     supportedLocales: const <Locale>[Locale('ru', 'RU')],
-    theme: ThemeData.light().copyWith(primaryColor: Color(0xFF360058)),
+    theme: ThemeData.light().copyWith(primaryColor: Color(0xFF0b1530)),
     initialRoute: '/',
     routes: _initRoutes(),
   ));
@@ -45,15 +45,20 @@ class CommonMenu extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-            ),
-            child: Text(
-              'RPI-админка',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
+                color: Theme.of(context).primaryColor,
+                image: DecorationImage(
+                    image: AssetImage("logo.png"),
+                    alignment: Alignment.bottomLeft,
+                    fit: BoxFit.contain)),
+            child: Align(
+                alignment: Alignment.bottomRight,
+                child: Text(
+                  'ROSSETI',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                )),
           ),
           _createMenuItem(context, 'Статистика', '/', icon: Icons.bar_chart),
           _createMenuItem(context, 'Топ решений', '/top', icon: Icons.topic),
