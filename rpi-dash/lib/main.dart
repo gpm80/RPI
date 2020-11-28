@@ -4,6 +4,7 @@ import 'package:rpi_dash/view/NotReleaseView.dart';
 
 import 'View.dart';
 import 'view/StatisticsView.dart';
+import 'view/TopListView.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -30,7 +31,7 @@ Map<String, WidgetBuilder> _initRoutes() {
           return TopListView();
         }),
     '/contest': (BuildContext context) => View('Конкурсы', () {
-          return TopListView();
+          return NotReleaseView();
         }),
   };
 }
@@ -56,7 +57,8 @@ class CommonMenu extends StatelessWidget {
           ),
           _createMenuItem(context, 'Статистика', '/', icon: Icons.bar_chart),
           _createMenuItem(context, 'Топ решений', '/top', icon: Icons.topic),
-          _createMenuItem(context, 'Конкурсы', '/contest', icon: Icons.assistant_photo),
+          _createMenuItem(context, 'Конкурсы', '/contest',
+              icon: Icons.assistant_photo),
         ],
       ),
     );

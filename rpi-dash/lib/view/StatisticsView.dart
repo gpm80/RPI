@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpi_dash/common/BoxStyle.dart';
 import 'package:rpi_dash/common/charts/BarTimeSeriesChart.dart';
 import 'package:rpi_dash/common/charts/PieStatisticsChart.dart';
 import 'package:rpi_dash/common/charts/SimpleTimeSeriesChart.dart';
@@ -45,13 +46,6 @@ class StatisticsView extends StatelessWidget {
             Expanded(child: widget)
           ],
         ),
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          border: Border.all(
-            color: Colors.grey[300],
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(12),
-        ));
+        decoration: BoxStyle.commonBox());
   }
 }
