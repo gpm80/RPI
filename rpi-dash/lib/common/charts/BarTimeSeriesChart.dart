@@ -1,6 +1,8 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
+import '../LocalizedTimeFactory.dart';
+
 class BarTimeSeriesChart extends StatelessWidget {
   final List<charts.Series<MonthSeries, DateTime>> seriesList;
 
@@ -15,6 +17,7 @@ class BarTimeSeriesChart extends StatelessWidget {
     return new charts.TimeSeriesChart(
       seriesList,
       animate: true,
+      dateTimeFactory: LocalizedTimeFactory(Localizations.localeOf(context)),
       defaultRenderer: new charts.BarRendererConfig<DateTime>(),
       defaultInteractions: false,
       behaviors: [new charts.SelectNearest(), new charts.DomainHighlighter()],
