@@ -6,16 +6,16 @@ class SimpleTimeSeriesChart extends StatelessWidget {
 
   SimpleTimeSeriesChart(this.seriesList);
 
-  /// Creates a [TimeSeriesChart] with sample data and no transition.
-  factory SimpleTimeSeriesChart.withSampleData() {
+  /// На основе даты.
+  factory SimpleTimeSeriesChart.byDate(DateTime dateTime) {
     return new SimpleTimeSeriesChart(
-      _createSampleData(),
+      fetchData(dateTime),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return new charts.TimeSeriesChart(
+    return charts.TimeSeriesChart(
       seriesList,
       animate: true,
       dateTimeFactory: const charts.LocalDateTimeFactory(),
@@ -23,32 +23,35 @@ class SimpleTimeSeriesChart extends StatelessWidget {
   }
 
   /// Create one series with sample hard coded data.
-  static List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
+  static List<charts.Series<TimeSeries, DateTime>> fetchData(
+      DateTime dateTime) {
+    //TODO запрос данных с сервера
     final data = [
-      new TimeSeriesSales(new DateTime(2015, 12, 31), 30),
-      new TimeSeriesSales(new DateTime(2016, 12, 31), 15),
-      new TimeSeriesSales(new DateTime(2017, 12, 31), 120),
-      new TimeSeriesSales(new DateTime(2018, 12, 31), 80),
-      new TimeSeriesSales(new DateTime(2019, 12, 31), 150),
-      new TimeSeriesSales(new DateTime(2020, 12, 31), 280),
+      new TimeSeries(new DateTime(2015), 30),
+      new TimeSeries(new DateTime(2016), 15),
+      new TimeSeries(new DateTime(2017), 120),
+      new TimeSeries(new DateTime(2018), 80),
+      new TimeSeries(new DateTime(2019), 150),
+      new TimeSeries(new DateTime(2020), 280),
+      new TimeSeries(new DateTime(2021), 0),
     ];
 
     return [
-      new charts.Series<TimeSeriesSales, DateTime>(
-        id: 'Sales',
+      new charts.Series<TimeSeries, DateTime>(
+        id: 'Динамика появления новых заявок',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (TimeSeriesSales sales, _) => sales.time,
-        measureFn: (TimeSeriesSales sales, _) => sales.sales,
+        domainFn: (TimeSeries series, _) => series.time,
+        measureFn: (TimeSeries series, _) => series.count,
         data: data,
       )
     ];
   }
 }
 
-/// Sample time series data type.
-class TimeSeriesSales {
+/// Модель графика
+class TimeSeries {
   final DateTime time;
-  final int sales;
+  final int count;
 
-  TimeSeriesSales(this.time, this.sales);
+  TimeSeries(this.time, this.count);
 }

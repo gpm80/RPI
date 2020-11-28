@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:rpi_dash/view/NotReleaseView.dart';
 
 import 'View.dart';
-import 'view/HomeView.dart';
+import 'view/StatisticsView.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -23,11 +24,14 @@ void main() {
 Map<String, WidgetBuilder> _initRoutes() {
   return {
     '/': (BuildContext context) => View('Статистика', () {
-      return HomeView();
-    }),
-    '/test': (BuildContext context) => View('Тест', () {
-      return HomeView();
-    }),
+          return StatisticsView();
+        }),
+    '/top': (BuildContext context) => View('Топ решений', () {
+          return TopListView();
+        }),
+    '/contest': (BuildContext context) => View('Конкурсы', () {
+          return TopListView();
+        }),
   };
 }
 
@@ -36,11 +40,23 @@ class CommonMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Drawer(
-      semanticLabel: 'label',
       child: new ListView(
         children: [
-          DrawerHeader(child: new Text('Spb-Alert')),
-          _createMenuItem(context, 'Главная', '/', icon: Icons.home),
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+            ),
+            child: Text(
+              'RPI-админка',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          _createMenuItem(context, 'Статистика', '/', icon: Icons.bar_chart),
+          _createMenuItem(context, 'Топ решений', '/top', icon: Icons.topic),
+          _createMenuItem(context, 'Конкурсы', '/contest', icon: Icons.assistant_photo),
         ],
       ),
     );

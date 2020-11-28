@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'main.dart';
+
 typedef Supplier<Widget> = Widget Function();
 
 class View extends StatelessWidget {
@@ -14,7 +16,7 @@ class View extends StatelessWidget {
       appBar: AppBar(
         title: Text(this._title),
       ),
-//      drawer: CommonMenu(),
+      drawer: CommonMenu(),
       body: Container(
         child: supplier(),
       ),
