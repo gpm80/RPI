@@ -9,8 +9,8 @@ class StatisticsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-        crossAxisCount: 2,
-        childAspectRatio: 1.7,
+        crossAxisCount: 1,
+        childAspectRatio: 1.2,
         padding: const EdgeInsets.all(4.0),
         mainAxisSpacing: 5.0,
         crossAxisSpacing: 5.0,

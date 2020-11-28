@@ -28,10 +28,12 @@ class TopList extends StatelessWidget {
 
   Widget _makeItem(BuildContext context, Idea idea) {
     return Card(
+        color: Colors.grey[300],
         elevation: 2.0,
         child: ListTile(
           leading: CircleAvatar(
-            backgroundColor: _chooseColor(idea),
+            backgroundImage: AssetImage("rele.png"),
+//            backgroundColor: _chooseColor(idea),
           ),
           title: _makeTitle(idea),
           subtitle: _makeSubscript(idea),
