@@ -6,10 +6,18 @@ class Idea {
   final int importance;
   final int collaborators;
   DateTime createDate;
+  String _state;
 
   Idea(this.title, this.type, this.typeDesc, this.description, this.importance,
       this.collaborators, String date) {
     this.createDate = DateTime.parse(date);
+  }
+
+
+  String get state => _state;
+
+  set state(String value) {
+    _state = value;
   }
 
   @override

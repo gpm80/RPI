@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpi_dash/common/BoxStyle.dart';
 import 'package:rpi_dash/model/Idea.dart';
 
 class TopList extends StatelessWidget {
@@ -27,38 +28,34 @@ class TopList extends StatelessWidget {
   }
 
   Widget _makeItem(BuildContext context, Idea idea) {
-    return Card(
-        color: Colors.grey[300],
-        elevation: 2.0,
-        child: ListTile(
-          leading: CircleAvatar(
-            backgroundImage: AssetImage("rele.png"),
-//            backgroundColor: _chooseColor(idea),
-          ),
-          title: _makeTitle(idea),
-          subtitle: _makeSubscript(idea),
-          onTap: () {
-            changeListener(idea);
-          },
-        ));
+    return BoxStyle.commonCard(ListTile(
+      leading: CircleAvatar(
+        backgroundImage: _chooseImage(idea),
+      ),
+      title: _makeTitle(idea),
+      subtitle: _makeSubscript(idea),
+      onTap: () {
+        changeListener(idea);
+      },
+    ));
   }
 
-  MaterialColor _chooseColor(Idea idea) {
+  ImageProvider _chooseImage(Idea idea) {
     if (idea.type == 'rele') {
-      return Colors.red;
+      return AssetImage("rele.png");
     } else if (idea.type == 'substations') {
-      return Colors.lightBlue;
+      return AssetImage("substations.png");
     } else if (idea.type == 'networks') {
-      return Colors.yellow;
+      return AssetImage("networks.png");
     }
-    return Colors.grey;
+    return AssetImage("notfound.png");
   }
 
   Widget _makeTitle(Idea idea) {
     return Container(
       child: Row(
         children: [
-          Text('${idea.title}'),
+          Text('${idea.title} ${idea.state ?? ''}'),
           Expanded(child: Text('')),
           Text('Важность: ${idea.importance} %'),
         ],

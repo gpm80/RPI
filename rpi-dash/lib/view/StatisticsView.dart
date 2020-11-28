@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpi_dash/common/BoxStyle.dart';
 import 'package:rpi_dash/common/charts/BarTimeSeriesChart.dart';
 import 'package:rpi_dash/common/charts/PieStatisticsChart.dart';
 import 'package:rpi_dash/common/charts/SimpleTimeSeriesChart.dart';
@@ -34,18 +35,14 @@ class StatisticsView extends StatelessWidget {
 
   /// Оборачивает элементы графиков
   Widget _getItem(String title, Widget widget) {
-    return Card(
-        elevation: 2.0,
-        child: Container(
-           padding: EdgeInsets.all(3.0),
-            child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(5.0),
-              child: Text(title),
-            ),
-            Expanded(child: widget)
-          ],
-        )));
+    return BoxStyle.commonCard(Column(
+      children: [
+        Container(
+          padding: EdgeInsets.all(5.0),
+          child: Text(title),
+        ),
+        Expanded(child: widget)
+      ],
+    ));
   }
 }

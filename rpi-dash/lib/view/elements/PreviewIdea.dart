@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:rpi_dash/common/BoxStyle.dart';
 import 'package:rpi_dash/model/Idea.dart';
 
 class PreviewIdea extends StatelessWidget {
   final Idea idea;
+  final void Function() changeListener;
 
-  PreviewIdea(this.idea);
+  PreviewIdea(this.idea, this.changeListener);
 
-  factory PreviewIdea.of(Idea idea) {
-    return PreviewIdea(idea);
+  factory PreviewIdea.of(Idea idea, void Function() call) {
+    return PreviewIdea(idea, call);
   }
 
   @override
@@ -15,8 +17,8 @@ class PreviewIdea extends StatelessWidget {
     if (idea == null) {
       return Center(child: Text('Не выбрано'));
     }
-    return Card(
-      child: Container(
+    return BoxStyle.commonCard(
+      Container(
         child: Column(
           children: [
             _actionButton(),
@@ -49,28 +51,33 @@ class PreviewIdea extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         child: Row(
           children: [
-            FlatButton(
-                child: new Text('На доработку'),
-                onPressed: () {},
-                color: new Color.fromRGBO(240, 240, 240, 1.0),
-                shape: new RoundedRectangleBorder(
-                    side: new BorderSide(color: Colors.yellow, width: 2.0),
-                    borderRadius: new BorderRadius.circular(30.0))),
-            FlatButton(
-                child: new Text('Отклонить'),
-                onPressed: () {},
-                color: new Color.fromRGBO(240, 240, 240, 1.0),
-                shape: new RoundedRectangleBorder(
-                    side: new BorderSide(color: Colors.red, width: 2.0),
-                    borderRadius: new BorderRadius.circular(30.0))),
-            FlatButton(
-                child: new Text('На внедрение'),
-                onPressed: () {},
-                color: new Color.fromRGBO(240, 240, 240, 1.0),
-                shape: new RoundedRectangleBorder(
-                    side: new BorderSide(color: Colors.green, width: 2.0),
-                    borderRadius: new BorderRadius.circular(30.0))),
+            Expanded(
+                child: _createButton('На доработку', Colors.yellow, () {
+              idea.state = "Revision";
+              changeListener();
+            })),
+            Expanded(
+                child: _createButton('Отклонить', Colors.red, () {
+              idea.state = "Reject";
+              changeListener();
+            })),
+            Expanded(
+                child: _createButton('На внедрение', Colors.green, () {
+              idea.state = "ToWork";
+              changeListener();
+            })),
           ],
         ));
+  }
+
+  /// Конструктор кнопок
+  Widget _createButton(String title, Color borderColor, Function() call) {
+    return FlatButton(
+        child: new Text(title),
+        onPressed: call,
+        color: new Color.fromRGBO(240, 240, 240, 1.0),
+        shape: new RoundedRectangleBorder(
+            side: new BorderSide(color: borderColor, width: 2.0),
+            borderRadius: new BorderRadius.circular(30.0)));
   }
 }

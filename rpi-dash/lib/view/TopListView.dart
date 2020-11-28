@@ -15,26 +15,25 @@ class TopListView extends StatefulWidget {
 
 class TopListViewState extends State<TopListView> {
   Idea preview;
+  List<Idea> map = Mapping.mapIdea(TestSeries.ideaList());
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Expanded(
-            flex: 50,
-            child: TopList.of(Mapping.mapIdea(TestSeries.ideaList()), (idea) {
-              setState(() {
-                preview = idea;
-              });
-            }),
-          ),
-          Expanded(
-            flex: 50,
-            child: PreviewIdea.of(preview),
-          ),
-        ],
-      ),
+    if (preview == null) {
+      return Container(
+          child: TopList.of(map, (idea) {
+      setState(() {
+      preview = idea;
+      });
+      }),
     );
+    } else {
+    return Container(
+    child: PreviewIdea.of(preview, () {
+    setState(() {
+    preview = null;
+    });
+    }));
+    }
   }
 }
