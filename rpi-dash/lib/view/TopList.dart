@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rpi_dash/common/BoxStyle.dart';
 import 'package:rpi_dash/model/Idea.dart';
 
 class TopList extends StatelessWidget {
@@ -27,9 +26,8 @@ class TopList extends StatelessWidget {
   }
 
   Widget _makeItem(BuildContext context, Idea idea) {
-    return Container(
-        padding: EdgeInsets.all(3.0),
-        decoration: BoxStyle.commonBox(),
+    return Card(
+        elevation: 2.0,
         child: ListTile(
           leading: CircleAvatar(
             backgroundColor: _chooseColor(idea),
