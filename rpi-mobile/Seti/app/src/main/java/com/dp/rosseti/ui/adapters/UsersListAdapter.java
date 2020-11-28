@@ -1,9 +1,11 @@
 package com.dp.rosseti.ui.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +19,14 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
 
     class UsersViewHolder extends RecyclerView.ViewHolder {
         private final TextView userItemView;
+        private final TextView positionItemView;
+        private final ImageView avatarItemView;
 
         private UsersViewHolder(View itemView) {
             super(itemView);
             userItemView = itemView.findViewById(R.id.textView);
+            positionItemView = itemView.findViewById(R.id.textView2);
+            avatarItemView = itemView.findViewById(R.id.user_avatar);
         }
     }
 
@@ -31,7 +37,7 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
 
     @Override
     public UsersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+        View itemView = mInflater.inflate(R.layout.user_recyclerview_item2, parent, false);
         return new UsersViewHolder(itemView);
     }
 
@@ -39,6 +45,8 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
     public void onBindViewHolder(UsersViewHolder holder, int position) {
         User current = mUsers.get(position);
         holder.userItemView.setText(current.getUser());
+        holder.positionItemView.setText(current.getPosition());
+        holder.avatarItemView.setImageURI(Uri.parse(current.getAvatar()));
     }
 
     public void setUsers(List<User> users){

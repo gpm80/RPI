@@ -1,5 +1,7 @@
 package com.dp.rosseti.data.db.entities;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -13,8 +15,26 @@ public class User {
     @ColumnInfo(name = "user")
     private String mUser;
 
-    public User(@NonNull String user) {
-        this.mUser = user;}
+    private String mPosition;
 
-    public String getUser(){return this.mUser;}
+    private String mAvatar;
+
+    public User(@NonNull String user, String position, String avatar) {
+        this.mUser = user;
+        this.mPosition = position;
+        this.mAvatar = avatar;
+    }
+
+    public String getUser() {
+        return this.mUser;
+    }
+
+    public String getPosition() {
+        return this.mPosition;
+    }
+
+    public String getAvatar() {
+        return this.mAvatar;
+    }
+
 }

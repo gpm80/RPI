@@ -1,4 +1,4 @@
-package com.dp.rosseti.ui.slideshow;
+package com.dp.rosseti.ui.challenge;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.dp.rosseti.R;
 
-public class SlideshowFragment extends Fragment {
+public class ChallengeFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private ChallengeViewModel challengeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        challengeViewModel =
+                new ViewModelProvider(this).get(ChallengeViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_challenges, container, false);
+        final TextView textView = root.findViewById(R.id.text_challenges);
+        challengeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

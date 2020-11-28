@@ -9,17 +9,30 @@
         android:id="@+id/nav_home"
         android:name="com.dp.rosseti.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_ideabox"
+            app:destination="@id/nav_ideabox" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_challenge"
+            app:destination="@id/nav_challenge" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_users"
         android:name="com.dp.rosseti.ui.users.UsersFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:label="@string/menu_users"
+        tools:layout="@layout/fragment_users" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.dp.rosseti.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_ideabox"
+        android:name="com.dp.rosseti.ui.ideabox.IdeaboxFragment"
+        android:label="@string/menu_ideabox"
+        tools:layout="@layout/fragment_ideabox" />
+
+    <fragment
+        android:id="@+id/nav_challenge"
+        android:name="com.dp.rosseti.ui.challenge.ChallengeFragment"
+        android:label="@string/menu_challenges"
+        tools:layout="@layout/fragment_challenges" />
 </navigation>

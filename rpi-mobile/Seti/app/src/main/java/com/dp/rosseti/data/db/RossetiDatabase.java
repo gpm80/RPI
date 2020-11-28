@@ -1,6 +1,7 @@
 package com.dp.rosseti.data.db;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.dp.rosseti.data.db.daos.UserDao;
 import com.dp.rosseti.data.db.entities.User;
+
+import java.net.URI;
 
 @Database(entities = {User.class}, version = 1,  exportSchema = false)
 public abstract class RossetiDatabase extends RoomDatabase {
@@ -53,12 +56,14 @@ public abstract class RossetiDatabase extends RoomDatabase {
 
     /**
      * Populate the database in the background.
-     * If you want to start with more words, just add them.
+     * If you want to start with more test data, just add them.
      */
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         private final UserDao mDao;
-        String [] users = {"Alexander Smirnov", "Svetlana Lanoz", "Petr"};
+        String [] users = {"Alexander Smirnov", "Svetlana Lanoz", "Petr Gusarov", "Vladimir Putin", "Sergey Gorelik"};
+        String [] positions = {"Senior SW Engineer", "Designer", "Backend Developer", "Backend Developer", "Project Manager"};
+        String [] avatars = {"avatar", "logo", "logo", "logo", "logo"};
 
         PopulateDbAsync(RossetiDatabase db) {
             mDao = db.userDao();
@@ -71,7 +76,8 @@ public abstract class RossetiDatabase extends RoomDatabase {
             mDao.deleteAll();
 
             for( int i = 0; i <= users.length - 1; i++) {
-                User user = new User(users[i]);
+
+                User user = new User(users[i], positions[i], "android.resource://com.dp.rosseti/drawable/" + avatars[i]);
                 mDao.insert(user);
             }
             return null;

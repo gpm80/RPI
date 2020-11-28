@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,7 +28,7 @@ public class UsersFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         mUsersViewModel =
                 new ViewModelProvider(this).get(UsersViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View root = inflater.inflate(R.layout.fragment_users, container, false);
 
         RecyclerView recyclerView = root.findViewById(R.id.recyclerview);
         final UsersListAdapter adapter = new UsersListAdapter(getActivity());
