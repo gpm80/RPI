@@ -3,11 +3,12 @@ import 'package:rpi_dash/model/Idea.dart';
 
 class TopList extends StatelessWidget {
   final List<Idea> items;
+  final void Function(Idea idea) changeListener;
 
-  TopList(this.items);
+  TopList(this.items, this.changeListener);
 
-  factory TopList.of(List<Idea> data) {
-    return TopList(data);
+  factory TopList.of(List<Idea> data, void Function(Idea idea) call) {
+    return TopList(data, call);
   }
 
   @override
@@ -34,6 +35,9 @@ class TopList extends StatelessWidget {
           ),
           title: _makeTitle(idea),
           subtitle: _makeSubscript(idea),
+          onTap: () {
+            changeListener(idea);
+          },
         ));
   }
 
