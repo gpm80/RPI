@@ -7,9 +7,9 @@ class SimpleTimeSeriesChart extends StatelessWidget {
   SimpleTimeSeriesChart(this.seriesList);
 
   /// На основе даты.
-  factory SimpleTimeSeriesChart.byDate(DateTime dateTime) {
+  factory SimpleTimeSeriesChart.by(List<TimeSeries> data) {
     return new SimpleTimeSeriesChart(
-      fetchData(dateTime),
+      fetchData(data),
     );
   }
 
@@ -24,25 +24,14 @@ class SimpleTimeSeriesChart extends StatelessWidget {
 
   /// Create one series with sample hard coded data.
   static List<charts.Series<TimeSeries, DateTime>> fetchData(
-      DateTime dateTime) {
-    //TODO запрос данных с сервера
-    final data = [
-      new TimeSeries(new DateTime(2015), 30),
-      new TimeSeries(new DateTime(2016), 15),
-      new TimeSeries(new DateTime(2017), 120),
-      new TimeSeries(new DateTime(2018), 80),
-      new TimeSeries(new DateTime(2019), 150),
-      new TimeSeries(new DateTime(2020), 280),
-      new TimeSeries(new DateTime(2021), 0),
-    ];
-
+      List<TimeSeries> _data) {
     return [
       new charts.Series<TimeSeries, DateTime>(
         id: 'Динамика появления новых заявок',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         domainFn: (TimeSeries series, _) => series.time,
         measureFn: (TimeSeries series, _) => series.count,
-        data: data,
+        data: _data,
       )
     ];
   }

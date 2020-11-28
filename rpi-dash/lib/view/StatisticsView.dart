@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rpi_dash/common/charts/DonutAutoLabelChart.dart';
-import 'package:rpi_dash/common/charts/GroupedStackedBarChart.dart';
+import 'package:rpi_dash/common/charts/BarTimeSeriesChart.dart';
+import 'package:rpi_dash/common/charts/PieStatisticsChart.dart';
 import 'package:rpi_dash/common/charts/SimpleTimeSeriesChart.dart';
+import 'package:rpi_dash/http/Mapping.dart';
+import 'package:rpi_dash/http/TestSeries.dart';
 
 class StatisticsView extends StatelessWidget {
   @override
@@ -13,14 +15,24 @@ class StatisticsView extends StatelessWidget {
         mainAxisSpacing: 5.0,
         crossAxisSpacing: 5.0,
         children: [
-          _getItem('Динамика появления новых заявок',
-              SimpleTimeSeriesChart.byDate(DateTime.now())),
-          _getItem('Динамика', DonutAutoLabelChart.withSampleData()),
-          _getItem('Динамика', GroupedStackedBarChart.withSampleData()),
-          _getItem('Динамика', SimpleTimeSeriesChart.byDate(DateTime.now())),
+          _getItem(
+              'Динамика появления новых заявок',
+              SimpleTimeSeriesChart.by(
+                  Mapping.mapTimeSeries(TestSeries.timeSeries()))),
+          _getItem('Распределение индекса важности за квартал',
+              PieStatisticsChart.by(Mapping.mapWeight(TestSeries.pieWeight()))),
+          _getItem(
+              'Подача идей за 2020 год ',
+              BarTimeSeriesChart.by(
+                  Mapping.mapMonth(TestSeries.monthSeries()))),
+          _getItem(
+              'Идеи на этапе внедрения',
+              BarTimeSeriesChart.by(
+                  Mapping.mapMonth(TestSeries.monthSeriesRelease()))),
         ]);
   }
 
+  /// Оборачивает элементы графиков
   Widget _getItem(String title, Widget widget) {
     return Container(
         padding: EdgeInsets.all(5.0),
