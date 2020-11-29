@@ -4,7 +4,7 @@ import 'package:rpi_dash/http/TestSeries.dart';
 import 'package:rpi_dash/model/Idea.dart';
 import 'package:rpi_dash/view/elements/PreviewIdea.dart';
 
-import 'TopList.dart';
+import 'elements/TopList.dart';
 
 class TopListView extends StatefulWidget {
   @override

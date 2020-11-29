@@ -16,6 +16,7 @@ class PieStatisticsChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return new charts.PieChart(seriesList,
         animate: true,
+        animationDuration: Duration(milliseconds: 1000),
         defaultRenderer: new charts.ArcRendererConfig(
             arcWidth: 60,
             arcRendererDecorators: [new charts.ArcLabelDecorator()]));

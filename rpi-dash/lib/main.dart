@@ -53,7 +53,7 @@ class CommonMenu extends StatelessWidget {
             child: Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  'ROSSETI',
+                  'ROSSETI эксперт',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,

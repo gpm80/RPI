@@ -17,19 +17,19 @@ class StatisticsView extends StatelessWidget {
         crossAxisSpacing: 5.0,
         children: [
           _getItem(
-              'Динамика появления новых заявок',
-              SimpleTimeSeriesChart.by(
-                  Mapping.mapTimeSeries(TestSeries.timeSeries()))),
-          _getItem('Распределение индекса важности за квартал',
-              PieStatisticsChart.by(Mapping.mapWeight(TestSeries.pieWeight()))),
-          _getItem(
               'Подача идей за 2020 год ',
               BarTimeSeriesChart.by(
                   Mapping.mapMonth(TestSeries.monthSeries()))),
+          _getItem('Распределение индекса важности за квартал',
+              PieStatisticsChart.by(Mapping.mapWeight(TestSeries.pieWeight()))),
           _getItem(
               'Идеи на этапе внедрения',
               BarTimeSeriesChart.by(
                   Mapping.mapMonth(TestSeries.monthSeriesRelease()))),
+          _getItem(
+              'Динамика появления новых заявок',
+              SimpleTimeSeriesChart.by(
+                  Mapping.mapTimeSeries(TestSeries.timeSeries()))),
         ]);
   }
 

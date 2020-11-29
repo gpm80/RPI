@@ -28,16 +28,19 @@ class TopList extends StatelessWidget {
   }
 
   Widget _makeItem(BuildContext context, Idea idea) {
-    return BoxStyle.commonCard(ListTile(
-      leading: CircleAvatar(
-        backgroundImage: _chooseImage(idea),
-      ),
-      title: _makeTitle(idea),
-      subtitle: _makeSubscript(idea),
-      onTap: () {
-        changeListener(idea);
-      },
-    ));
+    return BoxStyle.commonCard(
+        ListTile(
+          leading: CircleAvatar(
+            backgroundImage: _chooseImage(idea),
+          ),
+          title: _makeTitle(idea),
+          subtitle: _makeSubscript(idea),
+          trailing: _getState(idea),
+          onTap: () {
+            changeListener(idea);
+          },
+        ),
+        padding: EdgeInsets.zero);
   }
 
   ImageProvider _chooseImage(Idea idea) {
@@ -55,9 +58,7 @@ class TopList extends StatelessWidget {
     return Container(
       child: Row(
         children: [
-          Text('${idea.title} ${idea.state ?? ''}'),
-          Expanded(child: Text('')),
-          Text('Важность: ${idea.importance} %'),
+          Flexible(child: Text('${idea.title}')),
         ],
       ),
     );
@@ -75,5 +76,26 @@ class TopList extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _getState(Idea idea) {
+    switch (idea.state) {
+      case 'APPROVE':
+        return Icon(
+          Icons.assignment_turned_in,
+          color: Colors.green,
+        );
+      case 'REVISION':
+        return Icon(
+          Icons.assignment_late,
+          color: Colors.yellow[700],
+        );
+      case 'DECLINED':
+        return Icon(
+          Icons.cancel,
+          color: Colors.red,
+        );
+    }
+    return Icon(Icons.keyboard_arrow_right);
   }
 }
