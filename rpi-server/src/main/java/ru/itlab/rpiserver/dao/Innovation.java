@@ -1,6 +1,7 @@
 package ru.itlab.rpiserver.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.DateFormat;
@@ -20,10 +21,14 @@ public class Innovation {
     private String userName;
     @Field(type = FieldType.Date, format = DateFormat.date_time)
     private Date date;
+    @Field(index = false)
+    private String description;
     @Field(type = FieldType.Text)
     private String text;
-    @Field(index = false)
+    @Field
     private Boolean anonymous;
+    @Field
+    private List<String> voteCounter;
 
     public String getId() {
         return id;
@@ -47,6 +52,14 @@ public class Innovation {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getText() {
@@ -73,6 +86,18 @@ public class Innovation {
         this.anonymous = anonymous;
     }
 
+    public Boolean getAnonymous() {
+        return anonymous;
+    }
+
+    public List<String> getVoteCounter() {
+        return voteCounter;
+    }
+
+    public void setVoteCounter(List<String> voteCounter) {
+        this.voteCounter = voteCounter;
+    }
+
     @Override
     public String toString() {
         return "Innovation{" +
@@ -80,8 +105,10 @@ public class Innovation {
             ", userId='" + userId + '\'' +
             ", userName='" + userName + '\'' +
             ", date=" + date +
+            ", description='" + description + '\'' +
             ", text='" + text + '\'' +
             ", anonymous=" + anonymous +
+            ", voteCounter=" + voteCounter +
             '}';
     }
 }

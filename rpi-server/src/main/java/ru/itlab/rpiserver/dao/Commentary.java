@@ -18,6 +18,8 @@ public class Commentary {
     @Field(index = false)
     private String innovationId;
     @Field(index = false)
+    private String userId;
+    @Field(index = false)
     private String message;
     @Field(type = FieldType.Date, format = DateFormat.date_time)
     private Date date;
@@ -28,6 +30,14 @@ public class Commentary {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getInnovationId() {

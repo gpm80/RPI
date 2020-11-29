@@ -18,6 +18,14 @@ public class User {
     private String username;
     @Field(index = false)
     private String password;
+    @Field(index = false)
+    private String fullName;
+    @Field
+    private Integer rating;
+    @Field(index = false)
+    private String workExperience;
+    @Field(index = false)
+    private String position;
 
     public static User of(Map<String,String> parameters) {
         final User user = new User();
@@ -48,5 +56,37 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public String getWorkExperience() {
+        return workExperience;
+    }
+
+    public void setWorkExperience(String workExperience) {
+        this.workExperience = workExperience;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

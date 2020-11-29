@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itlab.rpiserver.dao.Commentary;
 import ru.itlab.rpiserver.dao.Innovation;
+import ru.itlab.rpiserver.dao.InnovationFile;
 import ru.itlab.rpiserver.repository.CommentaryRepository;
 import ru.itlab.rpiserver.repository.InnovationFilesRepository;
 import ru.itlab.rpiserver.repository.InnovationRepository;
@@ -68,6 +69,23 @@ public class InnovationService {
     }
 
     /**
+     * Проголосовать за предложение.
+     *
+     * @param innovationId id предложения
+     * @param userId       id пользователя
+     */
+    public void voteInnovation(String innovationId, String userId) {
+        innovationRepository.findById(innovationId).ifPresent(innovation -> {
+            if (innovation.getVoteCounter().contains(userId)) {
+                innovation.getVoteCounter().remove(userId);
+            } else {
+                innovation.getVoteCounter().add(userId);
+            }
+            innovationRepository.save(innovation);
+        });
+    }
+
+    /**
      * Сохранить комментарий.
      *
      * @param commentary комментарий
@@ -75,5 +93,33 @@ public class InnovationService {
      */
     public Commentary saveCommentary(Commentary commentary) {
         return commentaryRepository.save(commentary);
+    }
+
+    /**
+     * Сохранить файлы по предложению
+     *
+     * @param files информация о файлах
+     */
+    public void saveFiles(List<InnovationFile> files) {
+        innovationFilesRepository.saveAll(files);
+    }
+
+    /**
+     * Получить все файлы по предложению.
+     *
+     * @param id id предложения
+     * @return список файлов
+     */
+    public List<InnovationFile> getFiles(String id) {
+        return innovationFilesRepository.findByInnovationId(id).collect(Collectors.toList());
+    }
+
+    /**
+     * Удалить файлы по id предложения
+     *
+     * @param id id предложения
+     */
+    public void deleteFiles(String id) {
+        innovationFilesRepository.deleteByInnovationId(id);
     }
 }
