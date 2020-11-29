@@ -17,6 +17,7 @@ class BarTimeSeriesChart extends StatelessWidget {
     return new charts.TimeSeriesChart(
       seriesList,
       animate: true,
+      animationDuration: Duration(milliseconds: 1000),
       dateTimeFactory: LocalizedTimeFactory(Localizations.localeOf(context)),
       defaultRenderer: new charts.BarRendererConfig<DateTime>(),
       defaultInteractions: false,

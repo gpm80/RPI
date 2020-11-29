@@ -18,6 +18,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
     return charts.TimeSeriesChart(
       seriesList,
       animate: true,
+      animationDuration: Duration(milliseconds: 1000),
       dateTimeFactory: const charts.LocalDateTimeFactory(),
     );
   }
