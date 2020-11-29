@@ -8,10 +8,32 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/nav_topusers"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_topusers" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_profile" />
+
+        <item
+            android:id="@+id/nav_ideas"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_ideas" />
+
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_messages" />
+
         <item
             android:id="@+id/nav_users"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_users" />
+
         <item
             android:id="@+id/nav_ideabox"
             android:icon="@drawable/ic_menu_slideshow"
@@ -21,5 +43,15 @@
             android:id="@+id/nav_challenge"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_challenges" />
+
+        <item
+            android:id="@+id/nav_brainstorm"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_brainstorm" />
+
+        <item
+            android:id="@+id/nav_skills"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_skills" />
     </group>
 </menu>

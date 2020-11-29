@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_nav_home_to_nav_challenge"
             app:destination="@id/nav_challenge" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_brainstorm"
+            app:destination="@id/nav_brainstorm" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_skills"
+            app:destination="@id/nav_skills" />
     </fragment>
 
     <fragment
@@ -35,4 +41,40 @@
         android:name="com.dp.rosseti.ui.challenge.ChallengeFragment"
         android:label="@string/menu_challenges"
         tools:layout="@layout/fragment_challenges" />
+
+    <fragment
+        android:id="@+id/nav_messages"
+        android:name="com.dp.rosseti.ui.messages.MessagesFragment"
+        android:label="@string/menu_messages"
+        tools:layout="@layout/fragment_messages" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.dp.rosseti.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_topusers"
+        android:name="com.dp.rosseti.ui.topusers.TopUsersFragment"
+        android:label="@string/menu_topusers"
+        tools:layout="@layout/fragment_topusers"/>
+
+    <fragment
+        android:id="@+id/nav_brainstorm"
+        android:name="com.dp.rosseti.ui.brainstorm.BrainstormFragment"
+        android:label="@string/menu_brainstorm"
+        tools:layout="@layout/fragment_brainstorm"/>
+    <fragment
+        android:id="@+id/nav_skills"
+        android:name="com.dp.rosseti.ui.skills.SkillsFragment"
+        android:label="@string/menu_skills"
+        tools:layout="@layout/fragment_skills"/>
+
+    <fragment
+        android:id="@+id/nav_ideas"
+        android:name="com.dp.rosseti.ui.ideas.IdeasFragment"
+        android:label="@string/menu_ideas"
+        tools:layout="@layout/fragment_ideas" />
+
 </navigation>

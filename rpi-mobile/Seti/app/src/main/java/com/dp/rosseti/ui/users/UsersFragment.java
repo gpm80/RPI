@@ -30,7 +30,7 @@ public class UsersFragment extends Fragment {
                 new ViewModelProvider(this).get(UsersViewModel.class);
         View root = inflater.inflate(R.layout.fragment_users, container, false);
 
-        RecyclerView recyclerView = root.findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = root.findViewById(R.id.user_recyclerview);
         final UsersListAdapter adapter = new UsersListAdapter(getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -49,6 +49,22 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        final Button btBrainstorm = root.findViewById(R.id.bt_brainstorm);
+        btBrainstorm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_brainstorm);
+            }
+        });
+
+        final Button btSkills = root.findViewById(R.id.bt_skills);
+        btSkills.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_skills);
+            }
+        });
+
 
         return root;
     }
