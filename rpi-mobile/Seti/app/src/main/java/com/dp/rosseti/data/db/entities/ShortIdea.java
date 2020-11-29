@@ -15,6 +15,7 @@ public class ShortIdea {
 
     private String mTitle;
 
+    @ColumnInfo(name = "idea_owner")
     private String mOwnerName;
 
     private String mDescription;

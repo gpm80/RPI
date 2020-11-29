@@ -18,8 +18,11 @@ public interface ShortIdeaDao {
     // Always holds/caches latest version of data. Notifies its active observers when the
     // data has changed. Since we are getting all the contents of the database,
     // we are notified whenever any of the database contents have changed.
-    @Query("SELECT * from short_ideas_table ORDER BY idea_id ASC")
+    @Query("SELECT * from short_ideas_table ORDER BY idea_id DESC")
     LiveData<List<ShortIdea>> getAllShortIdeas();
+
+    @Query("SELECT * from short_ideas_table WHERE idea_owner = :name")
+    LiveData<List<ShortIdea>> getShortIdeasByName(String name);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(ShortIdea shortIdea);

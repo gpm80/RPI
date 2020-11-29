@@ -34,7 +34,11 @@
         android:id="@+id/nav_ideabox"
         android:name="com.dp.rosseti.ui.ideabox.IdeaboxFragment"
         android:label="@string/menu_ideabox"
-        tools:layout="@layout/fragment_ideabox" />
+        tools:layout="@layout/fragment_ideabox" >
+        <action
+            android:id="@+id/action_nav_ideabox_to_nav_newidea"
+            app:destination="@id/nav_newidea" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_challenge"
@@ -76,5 +80,14 @@
         android:name="com.dp.rosseti.ui.ideas.IdeasFragment"
         android:label="@string/menu_ideas"
         tools:layout="@layout/fragment_ideas" />
+    <fragment
+        android:id="@+id/nav_newidea"
+        android:name="com.dp.rosseti.ui.ideabox.NewIdeaFragment"
+        android:label="@string/new_idea"
+        tools:layout="@layout/fragment_newidea" >
+        <action
+            android:id="@+id/action_nav_newidea_to_nav_ideabox"
+            app:destination="@id/nav_ideabox" />
+    </fragment>
 
 </navigation>

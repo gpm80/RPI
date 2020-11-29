@@ -23,7 +23,7 @@ import java.net.URI;
                     User.class,
                     TopUser.class,
                     ShortIdea.class},
-        version = 3,
+        version = 4,
         exportSchema = false)
 public abstract class RossetiDatabase extends RoomDatabase {
 

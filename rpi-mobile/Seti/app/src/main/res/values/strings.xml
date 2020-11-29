@@ -17,4 +17,13 @@
     <string name="menu_ideas">My ideas</string>
     <string name="menu_profile">My profile</string>
     <string name="menu_topusers">Top users</string>
+    <string name="save">Save</string>
+    <string name="new_idea">New short idea</string>
+    <string name="title">Title</string>
+    <string name="short_description">Short Description</string>
+    <string name="nessessery_field">Nessessery Field</string>
+    <string name="detail_description">Detail Description</string>
+    <string name="not_nessessery_field">Not nessessery field</string>
+    <string name="attachment">Attachment</string>
+    <string name="add_attachment">Add attachment</string>
 </resources>
